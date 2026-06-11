@@ -1,0 +1,61 @@
+\ProvidesPackage{SEUReport}
+
+\RequirePackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\RequirePackage{amsmath,amssymb,bm}
+\RequirePackage{booktabs}
+\RequirePackage{fancyhdr}
+\RequirePackage{float}
+\RequirePackage{graphicx}
+\RequirePackage{xcolor}
+\RequirePackage{listings}
+\RequirePackage[unicode,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{\fangsong 东南大学模式识别与机器学习课程设计}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{15pt}
+
+\newcommand{\projecttitle}{基于局部尺度谱图与模块度选择的手写数字聚类}
+\newcommand{\studentname}{待填写}
+\newcommand{\studentid}{待填写}
+\newcommand{\studentmajor}{未来机器人}
+
+\newcommand{\cover}{
+    \begin{titlepage}
+        \centering
+        \vspace*{2cm}
+        \includegraphics[width=0.62\textwidth]{figures/seu_logo.pdf}
+        \vspace{2.5cm}
+
+        {\heiti\Huge 模式识别与机器学习课程设计\par}
+        \vspace{1.2cm}
+        {\heiti\Large \projecttitle\par}
+        \vfill
+
+        \renewcommand{\arraystretch}{1.8}
+        \begin{tabular}{rl}
+            \kaishu\Large 姓名： & \kaishu\Large \studentname \\
+            \kaishu\Large 学号： & \kaishu\Large \studentid \\
+            \kaishu\Large 专业： & \kaishu\Large \studentmajor \\
+        \end{tabular}
+        \vfill
+        {\large \today\par}
+    \end{titlepage}
+}
+
+\newcommand{\reference}{
+    \bibliographystyle{unsrt}
+    \bibliography{reference}
+}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    numbers=left,
+    numberstyle=\tiny,
+    frame=single,
+    breaklines=true,
+    showstringspaces=false
+}

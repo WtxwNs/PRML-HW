@@ -1,0 +1,18 @@
+seed: 42
+kmeans_n_init: 100
+pca_components: 20
+standard_spectral_neighbors: 30
+dbscan:
+  eps: 1.05
+  min_samples: 3
+proposed:
+  graph_neighbors: 7
+  scale_neighbor: 2
+  smoothing_neighbors: 5
+  smoothing_steps: 3
+sensitivity:
+  graph_neighbors: [5, 7, 10, 15, 20, 25, 30]
+  scale_neighbors: [1, 2, 3, 5, 7]
+  n_init: 100
+stability_seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+output_dir: outputs/final

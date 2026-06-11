@@ -1,0 +1,39 @@
+[project]
+name = "prml-digits-clustering"
+version = "0.1.0"
+description = "Handwritten digit clustering benchmark for the SEU PRML course project"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "matplotlib>=3.8",
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "pyyaml>=6.0",
+    "scikit-learn>=1.4",
+    "scipy>=1.12",
+    "seaborn>=0.13",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+prml-benchmark = "prml_project.benchmark:main"
+prml-experiments = "prml_project.experiments:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/prml_project"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
