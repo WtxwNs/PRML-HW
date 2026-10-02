@@ -89,7 +89,12 @@ class PCA:
         count = min(self.n_components, vt.shape[0])
         self.components_ = vt[:count]
         variance = singular_values**2 / max(len(features) - 1, 1)
-        self.explained_variance_ratio_ = variance[:count] / variance.sum()
+        total_variance = variance.sum()
+        self.explained_variance_ratio_ = (
+            variance[:count] / total_variance
+            if total_variance > 0
+            else np.zeros(count, dtype=np.float64)
+        )
         return self
 
     def transform(self, features: np.ndarray) -> np.ndarray:
