@@ -53,9 +53,21 @@ class KMeans:
         return np.asarray(centers)
 
     def fit_predict(self, features: np.ndarray) -> np.ndarray:
+        features = np.asarray(features, dtype=np.float64)
+        if features.ndim != 2 or features.shape[1] == 0 or not np.isfinite(features).all():
+            raise ValueError("features must be a finite two-dimensional array with columns")
+        for name in ("n_clusters", "n_init", "max_iter"):
+            value = getattr(self, name)
+            if not isinstance(value, (int, np.integer)) or value <= 0:
+                raise ValueError(f"{name} must be a positive integer")
         if len(features) < self.n_clusters:
             raise ValueError("n_clusters cannot exceed the number of samples")
 
+        # A fit is independent of previous datasets and their inertia scales.
+        self.cluster_centers_ = None
+        self.labels_ = None
+        self.inertia_ = np.inf
+        self.n_iter_ = 0
         master_rng = np.random.default_rng(self.random_state)
         for _ in range(self.n_init):
             rng = np.random.default_rng(master_rng.integers(0, 2**32 - 1))

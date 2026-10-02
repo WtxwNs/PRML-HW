@@ -26,3 +26,10 @@ def test_deskew_preserves_shape_and_finite_values():
     corrected = deskew_images(images)
     assert corrected.shape == images.shape
     assert np.isfinite(corrected).all()
+
+
+def test_pca_constant_input_has_finite_zero_variance_ratios():
+    model = PCA(2)
+    reduced = model.fit_transform(np.ones((4, 3)))
+    np.testing.assert_allclose(reduced, 0.0)
+    np.testing.assert_array_equal(model.explained_variance_ratio_, [0.0, 0.0])
